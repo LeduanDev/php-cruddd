@@ -39,8 +39,6 @@
     </header>
 
     <main>
-        <!-- Aquí se incluirá el contenido específico de cada página -->
-        <?php include $content; ?>
     </main>
 
     <footer>
