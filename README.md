@@ -1,3 +1,0 @@
-# php-cruddd
-
-leduan commit
