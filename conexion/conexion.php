@@ -1,6 +1,6 @@
 <?php
 
-$conn = new  mysqli("localhost", "root","","libreria");
+$conn = new  mysqli("localhost", "root","","mydb");
     
 $conn->close();
 
