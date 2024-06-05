@@ -3,6 +3,11 @@
     include '../conexion/conexion.php';
     // Incluir el archivo de creación de autor
     include '../sql/crear_autor.php';
+
+    $sql = "SELECT * FROM autor";
+
+    // Ejecutar la consulta
+    $resultado = $conn->query($sql);
 ?>
 <br>
 <br>
@@ -21,3 +26,37 @@
         </form>
     </div>
 </main>
+
+<table border="1" class="diplay  justify-center mt-20 w-[700px]">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Bibliografía</th>
+                <th>Fecha de Nacimiento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            // Verificar si se obtuvieron resultados
+            if ($resultado->num_rows > 0) {
+                // Iterar sobre los resultados y mostrar los datos en la tabla
+                while ($fila = $resultado->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $fila["id"] . "</td>";
+                    echo "<td>" . $fila["nombre"] . "</td>";
+                    echo "<td>" . $fila["bibliografia"] . "</td>";
+                    echo "<td>" . $fila["fecha_nacimiento"] . "</td>";
+                    echo "</tr>";
+                }
+            } else {
+                // Si no se encontraron resultados, mostrar un mensaje en la tabla
+                echo "<tr><td colspan='4'>No se encontraron resultados.</td></tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+    <?php
+// Cerrar la conexión
+$conn->close();
+?>
